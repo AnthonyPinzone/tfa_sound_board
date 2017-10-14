@@ -14,11 +14,43 @@
 <body>
 	<div id="page_container">
 
-	<div id="audioplayer">
-		<audio controls>
-			<source src="http://www.alexkatz.me/codepen/music/interlude.mp3">
-		</audio>
-	</div>
+		<header id="page_header">
+			<nav id="main_nav">
+				<ul class="podcast_select">
+					<li class="tfa_podcast">TFA Pod</li>
+					<li class="dynasty_life">Dynasty Life</li>
+					<li class="degenation">DegeNation</li>
+				</ul>
+				<ul class="audio_action">
+					<li class="add_audio" title="Add new audio"><i class="fa fa-plus" aria-hidden="true"></i></li>
+					<li class="remove_audio" title="Remove audio"><i class="fa fa-minus" aria-hidden="true"></i></li>
+				</ul>
+			</nav>
+		</header>
+
+		<aside id="new_file_form">
+			<form id="add_new_file" action="" method="post">
+				<select name="podcasts" class="podcasts">
+					<option selected disabled>Choose Podcast</option>
+					<option value="tfa_podcast">TFA Podcast</option>
+					<option value="dynasty_life">Dynasty Life</option>
+					<option value="degenation">DegeNation</option>
+				</select>
+				<input type="file" name="new_file" class="new_file">
+				<button type="submit" name="add_file_submit" class="add_file_submit">Add File</button>
+			</form>
+		</aside>
+
+		<main id="sound_board">
+			<?php @ require_once ("includes/$podcast.html"); ?>
+		</main>
+
+		<footer id="audioplayer">
+			<h4 id="now_playing">Now Playing: <span>Aaliyah - Are You That Somebody</span></h4>
+			<audio controls>
+				<source src="assets/audio/tfa_podcast/Aaliyah - Are You That Somebody (Official HD Video).mp3">
+			</audio>
+		</footer>
 
  <!-- Episode 100 
  	<h2>Episode 100</h2>
@@ -72,6 +104,10 @@
 -->
 </div><!-- page-container -->
 
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
 <script src="modules/plyr/plyr.js"></script>
 <script src="assets/js/scripts.js"></script>
 
