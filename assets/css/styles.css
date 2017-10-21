@@ -14,10 +14,22 @@ body {
   font-family: 'Catamaran', Tahoma, sans-serif;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+PAGE CONTAINER
+****************************************************/
 #page_container {
   min-height: 100%;
   padding-top: 50px;
-  padding-bottom: 85px;
+  padding-bottom: 105px;
+}
+
+@media screen and (min-width: 480px) {
+  #page_container { padding-bottom: 85px; }
 }
 
 /*
@@ -46,6 +58,11 @@ NAVIGATION
       display: inline-block;
       padding: 0 10px;
       position: relative; }
+      .podcast_select > li > a {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
       .podcast_select > li::before {
         background: red;
         content: ' ';
@@ -105,16 +122,16 @@ NAVIGATION
       cursor: pointer;
       display: block;
       float: left;
-      font-size: 1.25rem;
-      line-height: 1;
+      font-size: .875rem;
+      line-height: 30px;
       margin: 10px 15px 0 0;
-      padding: 3px 12px;
-      text-align:center;  }
+      padding: 0 15px;
+      text-align: center;
+      text-transform: uppercase;
+      height: 30px;  }
 
-    .add_audio:hover { color: green; }
+    .add_audio:hover { background-color: green; color: white; }
     .remove_audio:hover { color: red; }
-
-    .audio_action > li > i { pointer-events: none; }
 
 /*
 NEW FILE FORM
@@ -127,11 +144,52 @@ NEW FILE FORM
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
+  top: -100%;
   transition: 1s ease;
   z-index:0;
 }
   #new_file_form.active { top: 51px; transition: 1s ease; }
+
+  #new_file_form .formField {
+    border-bottom: 1px solid #cfcfcf;
+    padding: 15px;
+    width: 100%;
+  }
+
+  #new_file_form .formBtn { border: 0; text-align: center; }
+
+    #new_file_form .formField label {
+      color: #777;
+      display: block;
+      font-size: .75rem;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+@media screen and (min-width: 768px) {
+  #new_file_form .formField { float: left; border: 0; width: auto; }
+  #new_file_form .formBtn { position: absolute;right: 0;top: 50%;transform: translateY(-50%);}
+  #new_file_form .select_podcast { width: 150px; }
+  #new_file_form .file_selection { width: 265px; }
+  #new_file_form .button_label   { width: 150px; }
+}
+
+/*
+ERROR MESSAGES
+****************************************************/
+#errors {
+  background: #b91c2d;
+  color: white;
+  display: none;
+  padding: 15px;
+  text-transform: uppercase;
+}
+
+  #errors ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
 
 /*
 AUDIO PLAYER
@@ -155,4 +213,75 @@ AUDIO PLAYER
   overflow: hidden;
 }
 
-  #now_playing span { font-weight: 400; padding: 0 15px; }
+  #now_playing span {
+    display:block;
+    font-weight: 400; }
+
+.plyr__progress--played,
+.plyr__volume--display {
+  color: #b91c2d;
+}
+
+@media screen and (min-width: 480px) {
+  #now_playing span { display: inline; padding: 0 15px; }
+}
+
+/*
+SOUND BOARD
+****************************************************/
+#sound_board:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+#sound_board > .container {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 15px;
+}
+  #sound_board h1 {
+    color: #4a4a4a;
+    font-size: 1.75rem;
+    line-height: 1;
+    padding-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  #sound_board > .btn_container {
+    overflow: auto;
+  }
+    #sound_board button {
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      background: #dfdfdf;
+      border: 0;
+      border-radius: 5px;
+      color: #4a4a4a;
+      cursor: pointer;
+      float: left;
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 0.5%;
+      padding: 20px 10px;
+      outline: 0;
+      text-transform: uppercase;
+      width: 99%;
+    }
+    #sound_board button.active,
+    #sound_board button:hover {
+      background: #B91C2D;
+      color: #fff;
+    }
+
+@media screen and (min-width: 480px) {
+  #sound_board button { width: 49%; }
+}
+
+@media screen and (min-width: 768px) {
+  #sound_board button { width: 32.33%; }
+}
+
+@media screen and (min-width: 1000px) {
+  #sound_board button { width: 24%; }
+}
